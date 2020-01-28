@@ -6,13 +6,7 @@ import org.springframework.http.HttpStatus;
 
 import java.time.Instant;
 
-/**
- * Exception Response Class defines a basic Rest Exception Response
- *
- * @author Oliver.Gottas
- * @version 0.2.0
- * @since 0.2.0
- */
+
 @JsonInclude(Include.NON_NULL)
 public class ExceptionResponse {
 

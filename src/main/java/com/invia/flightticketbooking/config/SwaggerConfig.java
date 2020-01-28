@@ -13,9 +13,7 @@ import static com.google.common.base.Predicates.or;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 
-/**
- * @author Varadharajan
- */
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

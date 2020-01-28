@@ -10,7 +10,7 @@ public class Aircraft extends AuditEntity {
     @Id
     @GeneratedValue
     private int aircraftId;
-    @Column(name = "manufacture", length = 20)
+    @Column(name = "manufacturer", length = 20)
     private String manufacturer;
     @Column(name = "model", length = 20 , nullable = false)
     private String model;

@@ -1,9 +1,5 @@
 package com.invia.flightticketbooking.config;
 
-/**
- * @Author Varadharajan on 04/01/20 22:23
- * @Projectname bankmodelling
- */
 
 import com.invia.flightticketbooking.constants.RemaConstants;
 import org.springframework.context.MessageSource;

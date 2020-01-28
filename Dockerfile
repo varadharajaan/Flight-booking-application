@@ -20,4 +20,4 @@ WORKDIR /usr/config-client
 RUN ["mvn", "package"]
 
 EXPOSE 8080 
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "target/flightticketbooking-latest.jar"]
+CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "target/flightticketbooking-DEVELOP:1.0.0-SNAPSHOT.jar"]

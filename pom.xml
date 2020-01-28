@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.inviagroup</groupId>
 	<artifactId>flightticketbooking</artifactId>
-	<version>latest</version>
+	<version>DEVELOP:1.0.0-SNAPSHOT</version>
 	<name>FlightTicketBooking</name>
 	<packaging>jar</packaging>
 	<description>Flight ticket booking project for Spring Boot</description>
@@ -64,12 +64,6 @@
 			<version>2.4.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -134,58 +128,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>${dockerfile-maven-version}</version>
-				<executions>
-					<execution>
-						<id>default</id>
-						<goals>
-							<goal>build</goal>
-							<goal>push</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<username>varadharajaan</username>
-					<password>myamulO1@</password>
-					<repository>varadharajaan/invia</repository>
-					<tag>${project.version}</tag>
-					<buildArgs>
-						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-					</buildArgs>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<!-- Used to spin up an integration testing environment -->
-				<groupId>com.dkanejs.maven.plugins</groupId>
-				<artifactId>docker-compose-maven-plugin</artifactId>
-				<version>1.0.1</version>
-				<configuration>
-					<composeFile>${project.basedir}/docker-compose.yml</composeFile>
-					<detachedMode>true</detachedMode>
-
-				</configuration>
-				<executions>
-					<execution>
-						<id>docker-compose-up</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>up</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>docker-compose-down</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>down</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 		</plugins>
 	</build>
 
