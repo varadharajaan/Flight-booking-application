@@ -28,7 +28,7 @@ Actuators to check Application Health
 $ localhost:8080/health
 $ localhost:8080/httptrace/info
 
-Above commands gives complete details of the application
+
 
 ------------------------------------------------------------------------------------------------------------------------ 
 To consume SpringBoot app user service:
@@ -86,7 +86,14 @@ Elastic Search-LogStash-Kibana
 $ Implemented Dockerized version of ELK to log and index all the application logs
 $ To view generated logs on Kibana UI: [http://localhost:5601](http://localhost:5601)
 
+Custom Log Printer
+--------------------------
+$ Custom Log Printer which intercepts every request and response in Json Format
+
 ------------------------------------------------------------------------------------------------------------------------
+
+Above commands gives complete details of the application
+
 ##### i. Modularise :
 	For the time being I have modularise the project on package level.
 	Later we can also modularise in maven modules.
