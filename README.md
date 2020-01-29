@@ -90,6 +90,15 @@ Custom Log Printer
 --------------------------
 $ Custom Log Printer which intercepts every request and response in Json Format
 
+ADMIN LOGIN
+--------------------------
+$ hit: localhost:8080/login
+
+username -> john
+password -> password
+
+on giving incorrect password, proper error message is shown
+
 ------------------------------------------------------------------------------------------------------------------------
 
 Above commands gives complete details of the application
