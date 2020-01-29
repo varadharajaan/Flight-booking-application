@@ -1,8 +1,10 @@
 version: '2'
 
 services:
-  app:
+
+  invia-flight-booking:
     build: .
+    container_name: invia-flight-booking
     ports:
       - "8080:8080"
     links:

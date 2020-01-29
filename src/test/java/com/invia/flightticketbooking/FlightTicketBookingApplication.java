@@ -1,4 +1,4 @@
-package com.sarp.elk;
+package com.invia.flightticketbooking;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

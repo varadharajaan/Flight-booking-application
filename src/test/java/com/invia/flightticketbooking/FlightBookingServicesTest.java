@@ -1,4 +1,4 @@
-package com.sarp.elk;
+package com.invia.flightticketbooking;
 
 import com.invia.flightticketbooking.controller.MainController;
 import com.invia.flightticketbooking.model.Aircraft;
@@ -6,15 +6,12 @@ import com.invia.flightticketbooking.model.Airport;
 import com.invia.flightticketbooking.model.Flight;
 import com.invia.flightticketbooking.model.Passenger;
 import com.invia.flightticketbooking.services.FlightService;
-import net.bytebuddy.asm.Advice;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

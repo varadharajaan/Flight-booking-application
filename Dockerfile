@@ -1,23 +1,11 @@
-FROM java:8 
-
-# Install maven
-
-RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
-
-# RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie main" > /etc/apt/sources.list.d/jessie.list
-
-
-RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
-
-
-RUN echo 'Acquire::Check-Valid-Until no;' > /etc/apt/apt.conf.d/99no-check-valid-until
-RUN  apt-get update
-RUN  apt-get install -y maven
-
-# Adding springboot-elk app to container
-ADD . /usr/config-client  
-WORKDIR /usr/config-client
-RUN ["mvn", "package"]
-
-EXPOSE 8080 
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "target/flightticketbooking-DEVELOP:1.0.0-SNAPSHOT.jar"]
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
+MAINTAINER Varadharajan
+COPY pom.xml /build/
+COPY src /build/src/
+WORKDIR /build/
+RUN mvn package
+FROM openjdk:8-jre-alpine
+WORKDIR /app
+COPY --from=MAVEN_BUILD /build/target/flightticketbooking-DEVELOP:1.0.0-SNAPSHOT.jar /app/
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "flightticketbooking-DEVELOP:1.0.0-SNAPSHOT.jar"]
