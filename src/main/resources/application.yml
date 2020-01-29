@@ -1,0 +1,86 @@
+info:
+    app:
+        description: '@project.description@'
+        encoding: '@project.build.sourceEncoding@'
+        java:
+            version: '@java.version@'
+        name: Invia Flight Booking
+        version: '@project.version@'
+jwt:
+    secret: invia
+logging:
+    file:
+        name: logFile.log
+    level:
+        org:
+            springframework: ERROR
+            springframework.boot.test.context.SpringBootTestContextBootstrapper: WARN
+            springframework.test.context.support.AbstractContextLoader: WARN
+    pattern:
+        console: '%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n'
+        file: '%d %p %c{1.} [%t] %m%n'
+management:
+    endpoint:
+        health:
+            show-details: always
+        shutdown:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    metrics:
+        export:
+            prometheus:
+                enabled: true
+server:
+    port: 8080
+spring:
+    application:
+        name: flight-app
+    autoconfigure:
+        exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+    datasource:
+        hikari:
+            connectionTimeout: 20000
+            maximumPoolSize: 5
+        jpa:
+            properties:
+                hibernate:
+                    temp:
+                        use_jdbc_metadata_defaults: false
+        main:
+            allow-bean-definition-overriding: true
+        password: fpxLMd+Fj8suT8dd
+        servlet:
+            multipart:
+                enabled: true
+                file-size-threshold: 2KB
+                max-file-size: 100MB
+                max-request-size: 215MB
+        url: jdbc:mysql://SG-ftb-1847-master.servers.mongodirector.com:3306/ftb
+        username: sgroot
+    flyway:
+        baseline-on-migrate: true
+        enabled: true
+    jpa:
+        hibernate:
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL8Dialect
+                format_sql: true
+                temp:
+                    use_jdbc_metadata_defaults: false
+                use_sql_comments: true
+        show-sql: true
+    security:
+        user:
+            name: actuator
+            password: actuator
+            roles: ACTUATOR_ADMIN
+    thymeleaf:
+        cache: false
+        encoding: UTF-8
+        mode: HTML

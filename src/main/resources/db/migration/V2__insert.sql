@@ -65,11 +65,11 @@ UNLOCK TABLES;
 
 --
 -- Dumping data for table `users`
--- password1: inviapassword , password2: inviaflight
+-- password1: password , password2: password
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'varathu09@gmail.com','John','Doe',NULL,'$2y$12$io6IqvvV19/PSl3gn7BOh.Ln5EQYTy5KDpaDh13qYtmLXkjvr2A5i','john'),(2,'mike@gmail.com','Mike','Jacson',NULL,'$2y$12$s2XXzS1WhXvTGf9jHbz5ueeCLmTUGTrVLEKReH4xCv1C5vpAytoWC','mike');
+INSERT INTO `users` VALUES (1,'varathu09@gmail.com','John','Doe',NULL,'$2a$04$AKH7KONlNCThte32sIO7y.wuLJYovNumMtthBDQy00kOxT27fOvn2','john'),(2,'mike@gmail.com','Mike','Jacson',NULL,'$2a$04$AKH7KONlNCThte32sIO7y.wuLJYovNumMtthBDQy00kOxT27fOvn2','mike');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 

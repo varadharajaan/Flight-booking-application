@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.sql.DataSource;
@@ -35,6 +36,11 @@ public class FlightTicketBookingApplication extends SpringBootServletInitializer
     public void run(String... args) throws Exception {
 
         dataInitializer.initData();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

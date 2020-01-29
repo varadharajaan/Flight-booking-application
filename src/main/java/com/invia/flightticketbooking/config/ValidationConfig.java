@@ -1,7 +1,7 @@
 package com.invia.flightticketbooking.config;
 
 
-import com.invia.flightticketbooking.constants.RemaConstants;
+import com.invia.flightticketbooking.constants.InviaConstants;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +16,8 @@ public class ValidationConfig {
         ReloadableResourceBundleMessageSource messageSource
                 = new ReloadableResourceBundleMessageSource();
 
-        messageSource.setBasename(RemaConstants.MESSAGES_CLASSPATH);
-        messageSource.setDefaultEncoding(RemaConstants.DEFAULT_ENCODING);
+        messageSource.setBasename(InviaConstants.MESSAGES_CLASSPATH);
+        messageSource.setDefaultEncoding(InviaConstants.DEFAULT_ENCODING);
         return messageSource;
     }
 

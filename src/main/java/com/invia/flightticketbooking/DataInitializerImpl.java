@@ -28,30 +28,18 @@ public class DataInitializerImpl {
     public void initData() {
 
         User user = new User();
-        user.setEmail("varathu09@gmail.com");
-        user.setFirstname("varadharajan");
-        user.setLastname("damotharan");
-        user.setPassword("1234512345");
-        user.setUsername("varadharajaan");
-
-        List<User> listOfUsers = new ArrayList<>();
-        listOfUsers.add(user);
-        Role role = new Role();
-        role.setName("ADMIN");
-        role.setUsers(listOfUsers);
-        List<Role> roles = new ArrayList<>();
-        roles.add(role);
-        user.setRoles(roles);
+        user.setEmail("aaabbcc@gmail.com");
+        user.setFirstname("varadha");
+        user.setLastname("rajan");
+        user.setPassword("password");
+        user.setUsername("varadharajan");
+        user.setRoles(null);
 
         //roleRepository.save(role);
         //userRepository.save(user);
 
-        Flight flight = new Flight();
 
-        Airport arrAirport = new Airport();
-
-
-        Aircraft aircraft = new Aircraft();
+        //userRepository.save(user);
 
         List<User> users = userRepository.findAll();
         users.forEach(User::getId);
