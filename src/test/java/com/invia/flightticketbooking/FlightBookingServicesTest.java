@@ -5,6 +5,7 @@ import com.invia.flightticketbooking.model.Aircraft;
 import com.invia.flightticketbooking.model.Airport;
 import com.invia.flightticketbooking.model.Flight;
 import com.invia.flightticketbooking.model.Passenger;
+import com.invia.flightticketbooking.repository.FlightRepository;
 import com.invia.flightticketbooking.services.FlightService;
 import org.junit.After;
 import org.junit.Before;
@@ -18,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -37,6 +37,9 @@ public class FlightBookingServicesTest {
 
     @Mock
     FlightService flightService;
+
+    @Mock
+    FlightRepository flightRepository;
 
     List<Aircraft> aircraftList = new ArrayList<>();
     List<Flight> depflightList = new ArrayList<>();
@@ -167,6 +170,29 @@ public class FlightBookingServicesTest {
         allFlightsByAirportAndDepartureTime.forEach( a->
                 assertEquals(a.getFlightId(),1));
 
+    }
+
+    @Test
+    public void bookingFlightsDifferentScenario(){
+
+        when(flightService.getAllFlightsByAirportAndDepartureTime(any(Airport.class),any(Airport.class),any(LocalDate.class))).thenReturn(depflightList);
+
+        List<Flight> allFlightsByAirportAndDepartureTime = flightService.getAllFlightsByAirportAndDepartureTime(depAirport, desAirport, LocalDate.now());
+
+
+        allFlightsByAirportAndDepartureTime.forEach( a->
+                assertEquals(a.getFlightId(),1));
+
+
+    }
+
+    public  void bookingforDiffrentCraft() {
+        when(flightRepository.findAllByDepartureAirportEqualsAndDestinationAirportEqualsAndDepartureDateEquals(any(Airport.class),any(Airport.class),any(LocalDate.class))).thenReturn(depflightList);
+
+        List<Flight> allFlightsByAirportAndDepartureTime = flightService.getAllFlightsByAirportAndDepartureTime(depAirport, desAirport, LocalDate.now());
+
+        allFlightsByAirportAndDepartureTime.forEach( a->
+                assertEquals(a.getFlightId(),1));
     }
 
 

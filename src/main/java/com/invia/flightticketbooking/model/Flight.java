@@ -1,5 +1,6 @@
 package com.invia.flightticketbooking.model;
 
+import com.invia.flightticketbooking.constants.InviaConstants;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "flight")
+@Table(name = InviaConstants.flight)
 public class Flight extends AuditEntity {
     @Id
     @GeneratedValue
@@ -34,7 +35,7 @@ public class Flight extends AuditEntity {
     @ManyToOne
     Aircraft aircraft;
 
-    @OneToMany(mappedBy = "flight")
+    @OneToMany(mappedBy = InviaConstants.flight)
     List<Passenger> passengers = new ArrayList<>();
 
     public Flight() {
