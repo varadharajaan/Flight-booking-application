@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/varadharajaan/Flight-booking-application.svg?style=svg)](https://circleci.com/gh/varadharajaan/Flight-booking-application)
+
 INVIA-FLIGHT-BOOKING-APPLICATION 
 =========================
 
