@@ -35,7 +35,7 @@ public class Flight extends AuditEntity {
     @ManyToOne
     Aircraft aircraft;
 
-    @OneToMany(mappedBy = InviaConstants.flight)
+    @OneToMany(mappedBy = InviaConstants.flight, cascade = CascadeType.ALL)
     List<Passenger> passengers = new ArrayList<>();
 
     public Flight() {

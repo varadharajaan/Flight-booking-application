@@ -26,7 +26,7 @@ public class Passenger extends  AuditEntity {
 
     private String address;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Flight flight;
 
     public Passenger() {
