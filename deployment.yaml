@@ -1,31 +1,38 @@
-apiVersion: extensions/v1beta1
+
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flight-booking
+  name: invia-deployment
 spec:
-  replicas: 1
+  selector:
+    matchLabels:
+      app: invia
+  replicas: 3
   template:
     metadata:
       labels:
-        app: flight-booking
+        app: invia
     spec:
       containers:
-        - name: flight-booking-pod
-          image: varadharajan/invia:latest
+        - name: invia
+          image: varadharajaan/invia:latest
+          imagePullPolicy: Always
           ports:
-            - containerPort: 80
-            - containerPort: 443
+            - name: http
+              containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: flight-booking-service
+  name: invia
+  labels:
+    app: invia
 spec:
   selector:
-    app: flight-booking
+    app: invia
   ports:
     - name: http
-      protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: http
+      protocol: TCP
   type: LoadBalancer
