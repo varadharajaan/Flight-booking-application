@@ -3,7 +3,11 @@ package com.invia.flightticketbooking.config;
 import com.google.common.base.Predicate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -16,25 +20,22 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean
     public Docket postsApi() {
         return new Docket(DocumentationType.SWAGGER_2).groupName("public-api")
-                .apiInfo(apiInfo()).select().paths(postPaths()).build();
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.invia.flightticketbooking"))
+                .paths(PathSelectors.any())
+                .build();
+
+
     }
 
-    @SuppressWarnings("unchecked")
-    private Predicate<String> postPaths() {
-        return or(regex("/api/posts.*"), regex("/prescriptionManagement/v1.*"), regex("/userManagement/v1.*"));
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("JavaInUse API")
-                .description("JavaInUse API reference for developers")
-                .termsOfServiceUrl("http://google.com")
-                .license("Banking Modellinf=]g")
-                .licenseUrl("varathu09@gmail.com").version("1.0").build();
-    }
-
 }
